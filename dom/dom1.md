@@ -47,3 +47,29 @@
     Node.DOCUMENT_TYPE_NODE(10)
     Node.DOCUMENT_FRAGMENT_NODE(11)
     Node.NOTATION_NODE(12)
+
+// 判断节点类型
+```js
+if (someNode.nodeType === Node.ELEMENT_NODE) {
+    //... IE存在兼容性问题
+}
+if (someNode.nodeType === 1) {
+    // 适用所有浏览器
+}
+```
+
+Web浏览器，开发人员最常用的就是元素节点Node.ELEMENT_NODE(1) 和文本节点 Node.TEXT_NODE(3)
+
+#### nodeName / nodeValue属性
+```js
+// 使用前先判断节点类型， 元素ELEMENT的nodeName等于标签名
+if (someNode.nodeType === 1) {
+    value = someNode.nodeName
+}
+```
+每个节点都有一个childNodes属性 ----> 保存着一个NodeList对象,是一个类数组对象
+```js
+var firstChild = someNode.childNodes[0]
+var secondChild = someNode.childNodes.item(2)
+var count = someNode.childNodes.length
+```
