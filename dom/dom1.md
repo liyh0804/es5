@@ -73,3 +73,54 @@ var firstChild = someNode.childNodes[0]
 var secondChild = someNode.childNodes.item(2)
 var count = someNode.childNodes.length
 ```
+
+```js
+function convertToArray(nodes) {
+    var array = null
+    try {
+        array = array.prototype.slice.call(nodes, 0);
+    } catch(ex) {
+        array = new Array();
+        for (var i = 0; i < nodes.length; i ++) {
+            array.push(nodes[i])
+        }
+    }
+    return array
+}
+```
+
+parentNode  previousSibling nextSibling firstChild lastChild
+hasChildNodes()
+ownerDocument  --> 指向表示整个文档的文档节点
+
+## DOM提供了操作节点的方法：
+appendChild()  在childNodes末尾追加新增节点，如果该节点已经是文档一部分了，则该节点会从原来位置转移到新位置
+```js
+var returnedNode = someNode.appendChild(newNode)
+alert(returnedNode === newNode) // true
+
+var returnedNode = someNode.appendChild(someNode.firstNode)
+alert(returnedNode === someNode.firstNode) // false
+alert(returnedNode === someNode.lastNode) // true
+```
+
+节点插入childNodes具体某一位置：insertBefore(要插入的节点，作为参照的节点)  插入之后，被插入的节点会成为参照节点的前一个同胞节点previousSibling, 参照节点为null，insertBefore等同于appendChild
+
+```js
+var returnedNode = someNode.insertBefore(newNode, someNode.childNode.lastChild);
+```
+
+替换节点 replaceChild() 两个参数：要插入的节点、要替换的节点
+```js
+var returnedNode = someNode.replaceNode(newNode, someNode.lastNode);
+```
+
+移除节点 removeChild() 一个参数：要被移除的节点
+```js
+var formerLastChild = someNode.removeChild(someNode.lastChild);
+```
+
+复制节点cloneNode() :参数true、false表示深复制【节点及其整个子节点树】，浅复制【节点本身】
+
+处理文档树中的文本节点normalize():
+   某节点调用该方法，会在该节点的后代节点中查找文本节点没有文本 和 出现连续的两个文本节点的情况，将其删除或者合并
