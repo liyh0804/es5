@@ -157,3 +157,94 @@ var referrer = document.referrer
 ### 查找元素
 document.getElementById()
 document.getElementsByTagName()  // 返回HTMLCollection
+## Document
+HTMLDocument ---> document
+nodeType = 9
+nodeName = "#document"
+nodeValue = null
+parentNode = null
+ownerDocument = null
+子节点可能是一个DocumentType、Element、ProcessingInstruction、Comment
+
+documentElement 始终指向html页面中的<html>元素
+childNodes 列表访问文档元素
+```js
+var html = document.documentElement
+html === docuemnt.childNodes[0] === document.firstChild
+```
+
+body属性： 直接指向<body>
+var body = document.body
+
+
+HTMLCollection对象的一个方法： namedItem()
+```js
+var images = document.getElementsByTagName("img")
+var myImage = images.namedItem("myImage")
+```
+获取整个文档所有元素：
+var allElements = document.getElementsByTagName("*")
+
+HTMLDocument特有的：getElementsByName()  :: 最常用的是取得单选按钮
+```js
+var radios = document.getElementByName("color")
+```
+<fieldset>
+    <ul>
+        <li> 
+            <input type="radio" value="red" name="color" id="colorRed"> 
+            <label for="colorRed">Red </label>
+        </li>
+        <li>
+            <input type="radio" value="green" name="color" id="colorGreen">
+            <label for="colorGreen">Green </label>
+        </li>
+    </ul>
+</fieldset>
+
+#### 特殊的HTMLCollection集合
+document.anchors ---> 文档中所有带name特性的<a>元素
+document.forms
+document.images
+document.links ----> 文档中所有带href特性的<a>元素
+
+#### 文档写入
+    document.write() document.writeln() document.open() document.close()
+
+    动态加入外部资源：
+    document.write("<script type=\"text/javascript\" src=\"file.js\">" +"<\/script>");
+
+
+
+
+### Element类型
+    提供了对元素标签名、子节点及特性的访问
+    nodeType = 1
+    nodeName = 元素标签名 （nodeName = tagName）
+    nodeValue = null
+    parentNode = Document/Element
+
+    <div id="myDiv"></div>
+    ```js
+    var div = document.getElementById("myDiv")
+    if (div.tagName.toLowerCase() === 'div') {
+        // ...
+    }
+    ```
+#### html元素特性
+    id、title、className
+    var div = document.getElementById("myDiv")
+
+    id = div.id
+    title = div.title
+    className = div.className
+##### 特性操作接口
+    elem.getAttribute()
+    elem.setAttribute()
+    elem.removeAttribute()
+
+    HTML5规范： 自定义特性，加data-前缀方便验证
+
+    js编程操纵dom时，只使用对象的属性，代替getAttribute【取自定义属性的情况下，使用getAttribute()】
+
+    
