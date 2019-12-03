@@ -143,3 +143,41 @@ html === docuemnt.childNodes[0] === document.firstChild
 
 body属性： 直接指向<body>
 var body = document.body
+
+
+HTMLCollection对象的一个方法： namedItem()
+```js
+var images = document.getElementsByTagName("img")
+var myImage = images.namedItem("myImage")
+```
+获取整个文档所有元素：
+var allElements = document.getElementsByTagName("*")
+
+HTMLDocument特有的：getElementsByName()  :: 最常用的是取得单选按钮
+```js
+<fieldset>
+    <ul>
+        <li> 
+            <input type="radio" value="red" name="color" id="colorRed"> 
+            <label for="colorRed">Red </label>
+        </li>
+        <li>
+            <input type="radio" value="green" name="color" id="colorGreen">
+            <label for="colorGreen">Green </label>
+        </li>
+    </ul>
+</fieldset>
+var radios = document.getElementByName("color")
+```
+
+#### 特殊的HTMLCollection集合
+document.anchors ---> 文档中所有带name特性的<a>元素
+document.forms
+document.images
+document.links ----> 文档中所有带href特性的<a>元素
+
+#### 文档写入
+    document.write() document.writeln() document.open() document.close()
+
+    动态加入外部资源：
+    document.write("<script type=\"text/javascript\" src=\"file.js\">" +"<\/script>");
