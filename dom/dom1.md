@@ -154,7 +154,6 @@ var myImage = images.namedItem("myImage")
 var allElements = document.getElementsByTagName("*")
 
 HTMLDocument特有的：getElementsByName()  :: 最常用的是取得单选按钮
-```js
 <fieldset>
     <ul>
         <li> 
@@ -167,6 +166,7 @@ HTMLDocument特有的：getElementsByName()  :: 最常用的是取得单选按�
         </li>
     </ul>
 </fieldset>
+```js
 var radios = document.getElementByName("color")
 ```
 
@@ -181,3 +181,38 @@ document.links ----> 文档中所有带href特性的<a>元素
 
     动态加入外部资源：
     document.write("<script type=\"text/javascript\" src=\"file.js\">" +"<\/script>");
+
+
+
+
+### Element类型
+    提供了对元素标签名、子节点及特性的访问
+    nodeType = 1
+    nodeName = 元素标签名 （nodeName = tagName）
+    nodeValue = null
+    parentNode = Document/Element
+
+    <div id="myDiv"></div>
+    ```js
+    var div = document.getElementById("myDiv")
+    if (div.tagName.toLowerCase() === 'div') {
+        // ...
+    }
+    ```
+#### html元素特性
+    id、title、className
+    var div = document.getElementById("myDiv")
+
+    id = div.id
+    title = div.title
+    className = div.className
+##### 特性操作接口
+    elem.getAttribute()
+    elem.setAttribute()
+    elem.removeAttribute()
+
+    HTML5规范： 自定义特性，加data-前缀方便验证
+
+    js编程操纵dom时，只使用对象的属性，代替getAttribute【取自定义属性的情况下，使用getAttribute()】
+
+    
