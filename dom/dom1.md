@@ -124,3 +124,22 @@ var formerLastChild = someNode.removeChild(someNode.lastChild);
 
 处理文档树中的文本节点normalize():
    某节点调用该方法，会在该节点的后代节点中查找文本节点没有文本 和 出现连续的两个文本节点的情况，将其删除或者合并
+
+## Document
+HTMLDocument ---> document
+nodeType = 9
+nodeName = "#document"
+nodeValue = null
+parentNode = null
+ownerDocument = null
+子节点可能是一个DocumentType、Element、ProcessingInstruction、Comment
+
+documentElement 始终指向html页面中的<html>元素
+childNodes 列表访问文档元素
+```js
+var html = document.documentElement
+html === docuemnt.childNodes[0] === document.firstChild
+```
+
+body属性： 直接指向<body>
+var body = document.body
