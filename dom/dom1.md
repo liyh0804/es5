@@ -125,38 +125,6 @@ var formerLastChild = someNode.removeChild(someNode.lastChild);
 处理文档树中的文本节点normalize():
    某节点调用该方法，会在该节点的后代节点中查找文本节点没有文本 和 出现连续的两个文本节点的情况，将其删除或者合并
 
-var body = document.body
-document.body document.documentElement
-
-DocumentType  ---> <!DOCTYPE>
-document.doctype  ## 用处很有限
-
-文档类型是只读的，而且只能有一个元素子节点
-
-### 文档信息
-1、title
-var originTitle = document.title
-document.title = "New Page Title"
-
-2、URL
-   包含页面完整的URL
-
-3、domain
-    只包含页面的域名
-
-4、referrer
-    保存着链接到当前页面的那个页面的url，在没有来源页面的情况下，referrer会包含空字符串
-URL、domain、referrer都存在于请求的http头部
-
-var url = document.URL
-var domain = document.domain
-var referrer = document.referrer
-
-出于安全考虑，只有document.domain可以修改，但是只能同源策略（）
-
-### 查找元素
-document.getElementById()
-document.getElementsByTagName()  // 返回HTMLCollection
 ## Document
 HTMLDocument ---> document
 nodeType = 9
@@ -186,9 +154,6 @@ var myImage = images.namedItem("myImage")
 var allElements = document.getElementsByTagName("*")
 
 HTMLDocument特有的：getElementsByName()  :: 最常用的是取得单选按钮
-```js
-var radios = document.getElementByName("color")
-```
 <fieldset>
     <ul>
         <li> 
@@ -201,6 +166,9 @@ var radios = document.getElementByName("color")
         </li>
     </ul>
 </fieldset>
+```js
+var radios = document.getElementByName("color")
+```
 
 #### 特殊的HTMLCollection集合
 document.anchors ---> 文档中所有带name特性的<a>元素
@@ -247,7 +215,6 @@ document.links ----> 文档中所有带href特性的<a>元素
 
     js编程操纵dom时，只使用对象的属性，代替getAttribute【取自定义属性的情况下，使用getAttribute()】
 
-<<<<<<< HEAD
 
 
 ## Text 文本节点
@@ -282,7 +249,6 @@ document.links ----> 文档中所有带href特性的<a>元素
     element.normalize()
     ```
     分割文本节点： 是从文本节点中提取数据的一种常用DOM解析技术
-    
-=======
-    
->>>>>>> 04930477d7923356722d83d98c07b89fb35b1d61
+
+
+## 
