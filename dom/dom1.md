@@ -215,4 +215,38 @@ document.links ----> 文档中所有带href特性的<a>元素
 
     js编程操纵dom时，只使用对象的属性，代替getAttribute【取自定义属性的情况下，使用getAttribute()】
 
+
+
+## Text 文本节点
+    nodeType = 3
+    nodeName = '#text'
+    nodeValue = 节点所包含的文本
+    parentNode 是一个Element
+    不支持，没有子节点
+
+    通过nodeValue、data属性访问Text节点中包含的文本
+    appendData(text)
+    deleteData(offset, count)
+    insertData(offset, text)
+    replaceData(offset, count, text)
+    splitText(offset) // 从offset位置将当前文本分成两个文本节点
+    substringData(offset, count)
+    
+    ```js
+    var textNode = div.firstChild
+    div.firstChild.nodeValue = "some other message"
+    ```
+
+    ### 创建文本节点
+    document.createTextNode()
+    ```js
+    var textNode = document.createTextNode("<strong>Hello</strong> world!")
+
+    var element = document.createElement("div")
+    element.className = "message"
+    element.appendChild(textNode)
+    docuement.body.appendChild(element)
+    element.normalize()
+    ```
+    分割文本节点： 是从文本节点中提取数据的一种常用DOM解析技术
     
