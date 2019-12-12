@@ -215,6 +215,9 @@ document.links ----> 文档中所有带href特性的<a>元素
 
     js编程操纵dom时，只使用对象的属性，代替getAttribute【取自定义属性的情况下，使用getAttribute()】
 
+##### attributes属性
+  attributes属性中包含一个NamedNodeMap, getNamedItem(name)
+
 
 
 ## Text 文本节点
@@ -251,4 +254,30 @@ document.links ----> 文档中所有带href特性的<a>元素
     分割文本节点： 是从文本节点中提取数据的一种常用DOM解析技术
 
 
-## 
+## DOM操作技术
+
+### 动态脚本
+    页面加载时不存在，将来某一时刻通过DOM动态添加脚本
+    <script src="xxx" type="text/javascript" />
+    ```js
+    function loadScript(url) {
+        var script = document.createElement("script");
+        script.type = "text/javascript"
+        script.src = "http://xxx/xxx.js"
+        document.body.appendChild(script);
+    }
+    ```
+### 动态样式
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    ```js
+    function loadStyles(url) {
+        var link = document.createElement("link")
+        link.rel = "stylesheet"
+        link.type = "text/css"
+        link.href = url
+        var head = document.getElementsByTagName("head")[0]
+        head.appendChild(link);
+    }
+    ```
+
+### 
